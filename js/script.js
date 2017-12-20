@@ -1,42 +1,10 @@
-/*!
 
- =========================================================
- * Now-ui-kit-pro - v1.1.0
- =========================================================
-
- * Product Page: https://www.creative-tim.com/product/now-ui-kit-pro
- * Copyright 2017 Creative Tim (http://www.creative-tim.com)
-  * View License on http://www.creative-tim.com/license
-
- * Designed by www.invisionapp.com Coded by www.creative-tim.com
-
- =========================================================
-
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
- */
 
 var transparent = true;
 var big_image;
 
-var transparentDemo = true;
-var fixedTop = false;
-
-var navbar_initialized,
-    backgroundOrange = false,
-    toggle_initialized = false;
 
 $(document).ready(function() {
-    //  Activate the Tooltips
-    $('[data-toggle="tooltip"], [rel="tooltip"]').tooltip();
-
-    //    Activate bootstrap-select
-    if ($(".selectpicker").length != 0) {
-        $(".selectpicker").selectpicker({
-            iconBase: "now-ui-icons",
-            tickIcon: "ui-1_check"
-        });
-    };
 
     if ($(window).width() >= 768) {
         big_image = $('.header[data-parallax="true"]');
@@ -44,15 +12,6 @@ $(document).ready(function() {
             $(window).on('scroll', nowuiKit.checkScrollForParallax);
         }
     }
-
-    // Activate Popovers and set color for popovers
-    $('[data-toggle="popover"]').each(function() {
-        color_class = $(this).data('color');
-        $(this).popover({
-            template: '<div class="popover popover-' + color_class + '" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>'
-        });
-    });
-
     // Activate the image for the navbar-collapse
     nowuiKit.initNavbarImage();
 
@@ -71,18 +30,6 @@ $(document).ready(function() {
         $(this).parent(".input-group").removeClass("input-group-focus");
     });
 
-    // Activate bootstrapSwitch
-    $('.bootstrap-switch').each(function() {
-        $this = $(this);
-        data_on_label = $this.data('on-label') || '';
-        data_off_label = $this.data('off-label') || '';
-
-        $this.bootstrapSwitch({
-            onText: data_on_label,
-            offText: data_off_label
-        });
-    });
-
     if ($(window).width() >= 992) {
         big_image = $('.page-header-image[data-parallax="true"]');
 
@@ -91,168 +38,8 @@ $(document).ready(function() {
 
     // Activate Carousel
     $('.carousel').carousel({
-        interval: 4000
+        interval: 6000
     });
-
-    if ($(".datetimepicker").length != 0) {
-        $('.datetimepicker').datetimepicker({
-            icons: {
-                time: "now-ui-icons tech_watch-time",
-                date: "now-ui-icons ui-1_calendar-60",
-                up: "fa fa-chevron-up",
-                down: "fa fa-chevron-down",
-                previous: 'now-ui-icons arrows-1_minimal-left',
-                next: 'now-ui-icons arrows-1_minimal-right',
-                today: 'fa fa-screenshot',
-                clear: 'fa fa-trash',
-                close: 'fa fa-remove'
-            }
-        });
-
-        $('.datepicker').datetimepicker({
-            format: 'MM/DD/YYYY',
-            icons: {
-                time: "now-ui-icons tech_watch-time",
-                date: "now-ui-icons ui-1_calendar-60",
-                up: "fa fa-chevron-up",
-                down: "fa fa-chevron-down",
-                previous: 'now-ui-icons arrows-1_minimal-left',
-                next: 'now-ui-icons arrows-1_minimal-right',
-                today: 'fa fa-screenshot',
-                clear: 'fa fa-trash',
-                close: 'fa fa-remove'
-            }
-        });
-
-        $('.timepicker').datetimepicker({
-            //          format: 'H:mm',    // use this format if you want the 24hours timepicker
-            format: 'h:mm A', //use this format if you want the 12hours timpiecker with AM/PM toggle
-            icons: {
-                time: "now-ui-icons tech_watch-time",
-                date: "now-ui-icons ui-1_calendar-60",
-                up: "fa fa-chevron-up",
-                down: "fa fa-chevron-down",
-                previous: 'now-ui-icons arrows-1_minimal-left',
-                next: 'now-ui-icons arrows-1_minimal-right',
-                today: 'fa fa-screenshot',
-                clear: 'fa fa-trash',
-                close: 'fa fa-remove'
-            }
-        });
-    };
-
-
-    if ($('.twitter-sharrre').length != 0) {
-        $('.twitter-sharrre').sharrre({
-            share: {
-                twitter: true
-            },
-            enableHover: false,
-            enableTracking: false,
-            enableCounter: false,
-            buttons: {
-                twitter: {
-                    via: 'CreativeTim'
-                }
-            },
-            click: function(api, options) {
-                api.simulateClick();
-                api.openPopup('twitter');
-            },
-            template: '<i class="fa fa-twitter"></i>',
-            url: 'http://demos.creative-tim.com/now-ui-kit-pro/presentation.html'
-        });
-    }
-
-    if ($('.twitter-sharrre-nav').length != 0) {
-        $('.twitter-sharrre-nav').sharrre({
-            share: {
-                twitter: true
-            },
-            enableHover: false,
-            enableTracking: false,
-            enableCounter: false,
-            buttons: {
-                twitter: {
-                    via: 'CreativeTim'
-                }
-            },
-            click: function(api, options) {
-                api.simulateClick();
-                api.openPopup('twitter');
-            },
-            template: '<i class="fa fa-twitter"></i><p class="hidden-lg-up">Twitter</p>',
-            url: 'http://demos.creative-tim.com/now-ui-kit-pro/presentation.html'
-        });
-    }
-
-    if ($('.facebook-sharrre').length != 0) {
-        $('.facebook-sharrre').sharrre({
-            share: {
-                facebook: true
-            },
-            enableHover: false,
-            enableTracking: false,
-            enableCounter: false,
-            click: function(api, options) {
-                api.simulateClick();
-                api.openPopup('facebook');
-            },
-            template: '<i class="fa fa-facebook-square"></i>',
-            url: 'http://demos.creative-tim.com/now-ui-kit-pro/presentation.html'
-        });
-    }
-
-    if ($('.facebook-sharrre-nav').length != 0) {
-        $('.facebook-sharrre-nav').sharrre({
-            share: {
-                facebook: true
-            },
-            enableHover: false,
-            enableTracking: false,
-            enableCounter: false,
-            click: function(api, options) {
-                api.simulateClick();
-                api.openPopup('facebook');
-            },
-            template: '<i class="fa fa-facebook-square"></i><p class="hidden-lg-up">Facebook</p>',
-            url: 'http://demos.creative-tim.com/now-ui-kit-pro/presentation.html'
-        });
-    }
-
-    if ($('.linkedin-sharrre').length != 0) {
-        $('.linkedin-sharrre').sharrre({
-            share: {
-                linkedin: true
-            },
-            enableCounter: false,
-            enableHover: false,
-            enableTracking: false,
-            click: function(api, options) {
-                api.simulateClick();
-                api.openPopup('linkedin');
-            },
-            template: '<i class="fa fa-linkedin"></i>',
-            url: 'http://demos.creative-tim.com/now-ui-kit-pro/presentation.html'
-        });
-    }
-
-    if ($('.linkedin-sharrre-nav').length != 0) {
-        $('.linkedin-sharrre-nav').sharrre({
-            share: {
-                linkedin: true
-            },
-            enableCounter: false,
-            enableHover: false,
-            enableTracking: false,
-            click: function(api, options) {
-                api.simulateClick();
-                api.openPopup('linkedin');
-            },
-            template: '<i class="fa fa-linkedin"></i><p class="hidden-lg-up">LinkedIn</p>',
-            url: 'http://demos.creative-tim.com/now-ui-kit-pro/presentation.html'
-        });
-    }
 
 });
 
@@ -636,11 +423,6 @@ nowuiKit = {
     }
 }
 
-// Returns a function, that, as long as it continues to be invoked, will not
-// be triggered. The function will be called after it stops being called for
-// N milliseconds. If `immediate` is passed, trigger the function on the
-// leading edge, instead of the trailing.
-
 function debounce(func, wait, immediate) {
     var timeout;
     return function() {
@@ -654,16 +436,3 @@ function debounce(func, wait, immediate) {
         if (immediate && !timeout) func.apply(context, args);
     };
 };
-
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-46172202-1']);
-_gaq.push(['_trackPageview']);
-
-(function() {
-    var ga = document.createElement('script');
-    ga.type = 'text/javascript';
-    ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(ga, s);
-})();
